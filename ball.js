@@ -14,17 +14,18 @@ class Ball{
         this.final_y = final_y;
         this.final_z = final_z;
         this.speed = speed;
-        this.pitch_length = 500;
+        this.pitch_length = 670;
         this.gradX1 = (this.bounce_x - this.init_x)/(this.bounce_y - this.init_y);
         this.t1 = (this.bounce_y - this.init_y)/this.speed;
         this.grav = 2*(this.init_z)/(this.t1**2);
         this.gradX2 = (this.final_x - this.bounce_x)/(this.final_y - this.bounce_y);
         this.t2 = (this.final_y - this.bounce_y)/this.speed;
-        this.sz_bounce = 1.7*(this.init_z)/(this.t1);
+        this.sz_bounce = 1.3*(this.init_z)/(this.t1);
         this.path = [];
         this.r = r;
         this.g = g;
         this.b = b;
+        this.ballSize = 2;
     }
 
     move(){
@@ -57,13 +58,13 @@ class Ball{
     }
 
     show(){
-        fill(this.r,this.g,this.b);
+        fill(this.r,this.g,this.b,120);
         noStroke();
         for (var point in this.path){
             push();
             let p = this.path[point];
-            translate(p[0],p[1],p[2]);
-            sphere(6);
+            translate(p[0],p[1],p[2]+3);
+            sphere(this.ballSize);
             pop();
         }
     }
